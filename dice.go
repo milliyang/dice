@@ -63,7 +63,14 @@ func newDiceRollP(number, faces, adder int, half bool, rng intRng, repeatOnMaxLa
 	d := &DiceRoll{NumberOfDice: number, DieFaces: faces, Adder: adder, Half: half}
 	d.Rolls = make([]int, number)
 	for i := 0; i < number; i++ {
-		d.Rolls[i] = rng.Intn(faces) + 1
+
+		if USE_DEV_RANDOM {
+			randomNum := int(getIntFromDevRandom())
+			modeNum := randomNum % (faces)
+			d.Rolls[i] = modeNum + 1
+		} else {
+			d.Rolls[i] = rng.Intn(faces) + 1
+		}
 		d.RawTotal += d.Rolls[i]
 	}
 	if repeatOnMaxLast {
