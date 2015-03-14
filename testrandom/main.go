@@ -69,22 +69,24 @@ func testCasinoPoint() {
 		}
 	}
 
+	fmt.Println("\nPOINT\t  TIMES")
 	for i := 3; i <= ROUNDS*FACES; i++ {
 		value, ok := resultMap[i]
 		if ok {
-			fmt.Println(i, ":", value)
+			fmt.Println(i, "\t:", value)
 		} else {
-			fmt.Println(i, ": 0")
+			fmt.Println(i, "\t: 0")
 		}
 	}
 
-	fmt.Println("EVEN:")
+	fmt.Println("\nEVEN:")
+	fmt.Println("WeiSai\t  TIMES")
 	for i := 1; i <= FACES; i++ {
 		value, ok := evenMap[i]
 		if ok {
-			fmt.Println(i, i, i, ":", value)
+			fmt.Println(i, i, i, "\t:", value)
 		} else {
-			fmt.Println(i, i, i, ": 0")
+			fmt.Println(i, i, i, "\t: 0")
 		}
 	}
 
@@ -109,11 +111,12 @@ func testRandom() {
 		}
 	}
 
+	fmt.Println("Face\t  TIMES")
 	totalDice := 0
 	for i := 0; i < ROUNDS*FACES; i++ {
 		value, ok := resultMap[i]
 		if ok {
-			fmt.Println(i, ":", value)
+			fmt.Println(i, "\t:", value)
 			totalDice += value
 		}
 	}
