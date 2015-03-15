@@ -151,3 +151,15 @@ func newDiceRoll(description string, rng intRng, repeatOnMaxLast bool) (*DiceRol
 	}
 	return newDiceRollP(number, faces, adder, half, rng, repeatOnMaxLast), nil
 }
+
+/* static dice init with ABC*/
+func NewSebaoDiceRoll(A, B, C int) *DiceRoll {
+	d := &DiceRoll{NumberOfDice: 3, DieFaces: 6, Adder: 0, Half: false}
+	d.Rolls = make([]int, 3)
+	d.Rolls[0] = A
+	d.Rolls[1] = B
+	d.Rolls[2] = C
+	d.Total = A + B + C
+	d.RawTotal = d.Total
+	return d
+}
